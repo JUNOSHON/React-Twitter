@@ -1,7 +1,21 @@
-import React from 'react';
+import React, {useState} from "react";
 
-export default function Home() {
+export default function Home(event) {
+    const [nweet,setNweet] = useState("");
+    const onSubmit =(event) =>{
+        event.preventDefault();
+    };
+    const onChange = (event) => {
+        const{target:{value}}=event;
+        setNweet(value);
+    }
     return (
-        <div>Home</div>
+        <div>
+            <form onSubmit={onSubmit}>
+                <input type="text" onChange={onChange}  placeholder="What's on your mind?" maxLength={120}/>
+                <input type="submit" value="Nweet" />
+            </form>
+           
+        </div>
     )
 }
